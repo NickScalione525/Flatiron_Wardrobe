@@ -20,9 +20,9 @@ class OutfitsController < ApplicationController
     end
 
     def create
-        @outfit = current_user.outfits.build(outfit_params)
-        if @outfit.save
-            redirect_to outfits_path
+        @outfit = Outfit.create(outfit_params)
+        @outfit.user = current_user
+        if params[:user_id]
         else
             render 'new'
         end
@@ -47,7 +47,7 @@ class OutfitsController < ApplicationController
     private
 
     def outfit_params
-        params.require(:outfit).permit(:id, :date, :name, :kind, :duration, exercise_ids:[], exercises_attributes: [ :id, :name, :target_area, :description, outfit_exercises_attributes: [:id, :sets, :reps]])
+        params.require(:outfit).permit(:id, :top, :bottom, :shoes, :accessories, style_ids:[], styles_attributes: [ :id, :name, :era])
     end
 
     def set_outfit

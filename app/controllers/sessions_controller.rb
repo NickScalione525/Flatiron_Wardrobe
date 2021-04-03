@@ -11,10 +11,12 @@ class SessionsController < ApplicationController
         if user && user.authenticate(params[:user][:password])
             session[:user_id] = user.id
             redirect_to user_path(user)
+        elsif @user
+            @errors = ["Invalid Password, Please Try Again."]
+            render :new
         else
-            flash[:message] = "Login info incorrect, please try again."
-            redirect_to "/login"
-        end
+            @errors = ["Invalide Username, Please Try Again"]
+            render :new
     end
     
     
