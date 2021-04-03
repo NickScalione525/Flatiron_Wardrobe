@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
+  get '/signup' => 'users#new'
+  post '/signup' => 'users#create'
+
   resources :styles
-  resources :outfits
-  resources :users
+  resources :outfits do 
+    resources :styles
+  end
+  resources :users do
+    resources :outfits
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
