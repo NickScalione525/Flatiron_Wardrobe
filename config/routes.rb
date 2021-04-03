@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
+  get '/welcome', to: "welcome#home", as: "welcome_page"
+  root to: "welcome#home"
+
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
+
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
 
   resources :styles
   resources :outfits do 

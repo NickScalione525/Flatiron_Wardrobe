@@ -1,0 +1,20 @@
+<%=form_for @outfit do |f| %>
+  <%= f.label "Top:" %>
+  <%= f.text_field :top %><br>
+  <%= f.label "Bottom:" %>
+  <%= f.text_field :bottom %><br>
+  <%= f.label "Shoes:" %>
+  <%= f.text_field :shoes %><br>
+  <%= f.label "Accessories:" %>
+  <%= f.text_field :accessories %><br>
+
+  <h1><%=f.label "Style" %><br></h1>
+  <%=f.fields_for :styles do |m|%>
+    <%= m.hidden_field :user_id%>
+    <%=m.label :name%>
+    <%=m.text_field :name %><br>
+    <%=m.label :era%>
+    <%=m.text_field :era%><br>
+  <%end%>
+  <%=f.submit%>
+<%end%>

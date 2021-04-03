@@ -16,7 +16,7 @@ class OutfitsController < ApplicationController
     end
 
     def new
-        @outfit = outfit.new
+        @outfit = Outfit.new
     end
 
     def create

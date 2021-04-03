@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Flatiron Wardrobe</title>
+    <title>FlatironWardrobe</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -14,9 +14,9 @@
   <div class="container-fluid">
      <% if logged_in?%>
   <%= link_to "Create an Outfit", new_outfit_path, class: "navbar-brand" %>
-  <%= link_to "All Outfits", outfits_path, class: "navbar-brand" %>
-  <%= link_to "My Outfits", user_outfits_path(current_user), class: "navbar-brand" %>
-  <%= link_to "Logout", logout_path, method: "delete", class: "navbar-brand" %>
+  <%= link_to "All outfits", outfits_path, class: "navbar-brand" %>
+  <%= link_to "My outfits", user_outfits_path(current_user), class: "navbar-brand" %>
+  <%# <%= link_to "Logout", logout_path, method: "delete", class: "navbar-brand" %> 
 
   <%else%>
 
@@ -32,3 +32,4 @@
     <%= yield %>
  <body>
 </html>
+
