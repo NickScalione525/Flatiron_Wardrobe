@@ -1,4 +1,5 @@
 class StylesController < ApplicationController
+    before_action(:redirect_if_not_logged_in)   
 
     layout "application"
 
@@ -27,10 +28,11 @@ class StylesController < ApplicationController
         @style.user = current_user
         if params[:outfit_id]
         @style.outfit_id = params[:outfit_id]
+        end
         @style.save
 
         redirect_to outfits_path
-        end
+        
     end
 
     private

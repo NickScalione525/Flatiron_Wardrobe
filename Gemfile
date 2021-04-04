@@ -7,7 +7,7 @@ gem 'bootstrap-sass'
 
 gem 'sprockets-rails'
 
-
+gem 'pry'
 
 
 gem 'omniauth-facebook'

@@ -9,6 +9,8 @@
   <%= f.text_field :shoes %><br>
   <%= f.label "Accessories:" %>
   <%= f.text_field :accessories %><br>
+  <%= f.label "Times Worn:"%>
+  <%= f.number_field :times_worn %> <br>
       <%= f.label "Styles:" %>
       <%= f.fields_for :styles do |m|%><br>
       <%= m.label "Type of Style:" %>

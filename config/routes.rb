@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
 
-  resources :styles
+
+
+  resources :users, except: [:new, :create] do
+    resources :outfits
+  end
+
   resources :outfits do 
     resources :styles
   end
-  resources :users do
-    resources :outfits
-  end
+  resources :styles 
 
 
   get '/welcome', to: "welcome#home", as: "welcome_page"
@@ -20,6 +23,7 @@ Rails.application.routes.draw do
 
   get '/logout' => 'sessions#destroy'
 
+ 
 
 
 

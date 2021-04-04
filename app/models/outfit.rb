@@ -2,18 +2,19 @@ class Outfit < ApplicationRecord
     has_many :users, through: :styles
     has_many :styles
 
-    validate :is_title_case
+    # validate :is_title_case
 
-    before_validation :make_title_case
+    # before_validation :make_title_case
 
     accepts_nested_attributes_for :styles
+
+    scope :highest_version, -> { all.order(times_worn: :DESC).limit(1).first }
 
 
     def styles_attributes=(attrs)
 
     attrs.values.each do |hash|
-        s = Style.create(hash)
-        self.styles.create(hash)
+        self.styles.build(hash)
     end
 end
 

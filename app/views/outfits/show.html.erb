@@ -2,17 +2,24 @@
 
 <p>
 <ul>
+<h1> Outfit Name </h1>
 <h3><%=@outfit.name%> </h3>
 <%= @outfit.top%> |
 <%= @outfit.bottom%> |
 <%= @outfit.shoes%> |
 <%= @outfit.accessories%>
-<ul>
-<p>
+<%= @outfit.times_worn%>
+<br>
+<br>
 
+
+<h3> Style </h3>
 <%@outfit.styles.each do |s|%>
-<li><%= s.name%> <%= s.era%></li>
+<li><%= s.name%> | <%= s.era%></li>
 <%end%>
+
+<br>
+<br>
 
 
 

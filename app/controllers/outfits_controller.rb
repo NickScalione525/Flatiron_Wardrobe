@@ -1,6 +1,10 @@
 class OutfitsController < ApplicationController
+
+    before_action(:set_outfit, except: [:index, :new, :create])
+    before_action(:redirect_if_not_logged_in)
     
     layout "application"
+   
 
     def index
             @outfits = Outfit.all
@@ -18,10 +22,12 @@ class OutfitsController < ApplicationController
 
     def create
         @outfit = Outfit.new(outfit_params)
+        @outfit.styles.each {|m| m.user = current_user}
         if @outfit.save
             redirect_to outfit_path(@outfit)
 
         else
+            
             @errors = @outfit.errors.full_messages
             render 'new'
         end
@@ -35,10 +41,11 @@ class OutfitsController < ApplicationController
     end
 
     def edit
+ 
     end
 
     def destroy
-        @outfit.destroy
+        @outfit.delete
         redirect_to root_path
     end
  
@@ -46,7 +53,7 @@ class OutfitsController < ApplicationController
     private
 
     def outfit_params
-        params.require(:outfit).permit(:id, :name, :top, :bottom, :shoes, :accessories, styles_attributes: [ :name, :era])
+        params.require(:outfit).permit(:id, :name, :top, :bottom, :shoes, :accessories, :times_worn, styles_attributes: [ :name, :era])
     end
 
     def set_outfit
