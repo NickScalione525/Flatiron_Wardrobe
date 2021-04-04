@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :outfits do 
     resources :styles
   end
-  resources :users, except: [:new, :create] do
+  resources :users do
     resources :outfits
   end
 

@@ -1,5 +1,6 @@
 class OutfitsController < ApplicationController
     before_action :set_outfit, only: [:show, :edit, :update, :destroy]
+    layout "application"
 
     def index
             @outfits = Outfit.all
@@ -15,10 +16,11 @@ class OutfitsController < ApplicationController
 
     def create
         @outfit = Outfit.create(outfit_params)
-        @outfit.users = current_user
-        if params[:user_id]
+        if @outfit.save
+            redirect_to outfit_path(@outfit)
 
         else
+            @errors = @outfit.errors.full_messages
             render 'new'
         end
     end
@@ -42,7 +44,7 @@ class OutfitsController < ApplicationController
     private
 
     def outfit_params
-        params.require(:outfit).permit(:id, :top, :bottom, :shoes, :accessories, style_ids:[], styles_attributes: [ :id, :name, :era])
+        params.require(:outfit).permit(:id, :name, :top, :bottom, :shoes, :accessories, style_ids:[], styles_attributes: [ :id, :name, :era])
     end
 
     def set_outfit

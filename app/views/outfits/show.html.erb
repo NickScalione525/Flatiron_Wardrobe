@@ -2,12 +2,14 @@
 
 <p>
 <ul>
+<h3><%=@outfit.name%> </h3>
 <%= @outfit.top%> |
 <%= @outfit.bottom%> |
 <%= @outfit.shoes%> |
 <%= @outfit.accessories%>
 <ul>
 <p>
+
 
 
 <%=link_to "Add a Style", new_outfit_style_path(@outfit)%>
