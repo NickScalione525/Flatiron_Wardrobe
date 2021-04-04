@@ -21,7 +21,7 @@ class OutfitsController < ApplicationController
 
     def create
         @outfit = Outfit.create(outfit_params)
-        @outfit.user = current_user
+        @outfit.users = current_user
         if params[:user_id]
         else
             render 'new'

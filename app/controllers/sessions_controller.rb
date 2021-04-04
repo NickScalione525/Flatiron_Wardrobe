@@ -18,7 +18,15 @@ class SessionsController < ApplicationController
             @errors = ["Invalide Username, Please Try Again"]
             render :new
     end
+
+    def create_with_fb
+        user = User.find_or_create_by(username: self.request.env['omniauth.auth']['info']['email']) do |u|
+            u.password = 'password'
     
+    binding.pry
     
+    end
+    
+end
     
     end

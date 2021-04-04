@@ -8,7 +8,13 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
 
-  post '/logout' => 'sessions#destroy'
+  get '/logout' => 'sessions#destroy'
+
+
+
+
+  get '/auth/facebook/callback', to: "sessions#create_with_fb"
+
 
   resources :styles
   resources :outfits do 

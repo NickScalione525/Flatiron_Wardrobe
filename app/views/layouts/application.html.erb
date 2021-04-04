@@ -16,7 +16,7 @@
   <%= link_to "Create an Outfit", new_outfit_path, class: "navbar-brand" %>
   <%= link_to "All outfits", outfits_path, class: "navbar-brand" %>
   <%= link_to "My outfits", user_outfits_path(current_user), class: "navbar-brand" %>
-  <%= link_to "Logout", logout_path, method: "delete", class: "navbar-brand" 
+  <%= link_to "Logout", logout_path, class: "navbar-brand" %>
 
   <%else%>
 
