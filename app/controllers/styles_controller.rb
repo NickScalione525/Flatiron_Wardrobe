@@ -11,7 +11,7 @@ class StylesController < ApplicationController
     def new
         if params[:outfit_id]
             @outfit = Outfit.find_by(id: params[:item_id])
-            @style = @outfit.styles.build
+            @style = Style.new
             @styles = Style.all
 
 
@@ -24,10 +24,17 @@ class StylesController < ApplicationController
 
     def create
         @style = Style.create(style_params)
+        @style.user = current_user
+        @style.save
 
         redirect_to outfit_path
 
     end
 
-  
+    private
+
+    def style_params
+        params.require(:style).permit(:name, :era, :outfit_id)
+    end
+
 end

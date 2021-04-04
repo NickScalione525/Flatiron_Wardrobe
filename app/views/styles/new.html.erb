@@ -1,11 +1,4 @@
-<% @errors && @errors.each do |e|%>
-<li><%=e%></li>
-<%end%>
 
-
-<% if @outfit%>
-    <h3><%= @outfit.name%></h3>
-<%end%>
 
 <%= form_for(@style) do |f|%>
 
@@ -17,7 +10,7 @@
 <%=f.label "Outfit"%>
 <%=f.collection_select(:outfit_id, @outfits, :id, :name) "Name"%>
 <%else%>
-<%=f.hidden_field :outfit_id, value: @outfit.id %>
+<%=f.hidden_field :outfit.name %>
 <%end%>
 <%=f.submit("Submit")%>
 <%end%>
