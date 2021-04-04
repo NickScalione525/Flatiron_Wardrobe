@@ -10,7 +10,7 @@ class StylesController < ApplicationController
 
     def new
         if params[:outfit_id]
-            @outfit = Outfit.find_by(id: params[:item_id])
+            @outfit = Outfit.find_by(id: params[:outfit_id])
             @style = Style.new
             @styles = Style.all
 
@@ -25,10 +25,12 @@ class StylesController < ApplicationController
     def create
         @style = Style.create(style_params)
         @style.user = current_user
+        if params[:outfit_id]
+        @style.outfit_id = params[:outfit_id]
         @style.save
 
-        redirect_to outfit_path
-
+        redirect_to outfits_path
+        end
     end
 
     private

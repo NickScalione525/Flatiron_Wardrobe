@@ -1,16 +1,10 @@
+<h1> Comeplete this Outfit by giving it a Style </h1>
 
-
-<%= form_for(@style) do |f|%>
+<%= form_for(@style, url: form_url_helper) do |f|%>
 
 <%=f.label "Name"%>
 <%=f.text_field(:name)%>
 <%=f.label "Era"%>
 <%=f.text_field(:era)%>
-<% if !@outfit%>
-<%=f.label "Outfit"%>
-<%=f.collection_select(:outfit_id, @outfits, :id, :name) "Name"%>
-<%else%>
-<%=f.hidden_field :outfit.name %>
-<%end%>
 <%=f.submit("Submit")%>
 <%end%>
