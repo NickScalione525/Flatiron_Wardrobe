@@ -3,7 +3,7 @@
 <% @outfits.each do |outfit| %>
 
 <div>
-</h2><%= link_to outfit, outfit%><h2>
+</h2><%= link_to outfit.name, outfit_path(outfit)%><h2>
 </h3>
 <%= outfit.top%>
 <br>

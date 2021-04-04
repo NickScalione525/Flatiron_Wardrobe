@@ -1,14 +1,8 @@
 class OutfitsController < ApplicationController
-    before_action :set_outfit, only: [:show, :edit, :update, :destroy,]
+    before_action :set_outfit, only: [:show, :edit, :update, :destroy]
 
     def index
-        if params[:user_id]
-            user = User.find_by(id: params[:user_id])
-            @outfits = current_user.outfits
-        else
             @outfits = Outfit.all
-
-        end
     end
 
     def show
@@ -23,6 +17,7 @@ class OutfitsController < ApplicationController
         @outfit = Outfit.create(outfit_params)
         @outfit.users = current_user
         if params[:user_id]
+
         else
             render 'new'
         end
@@ -51,7 +46,7 @@ class OutfitsController < ApplicationController
     end
 
     def set_outfit
-        @outfit = outfit.find(params[:id])
+        @outfit = Outfit.find(params[:id])
     end
 
 

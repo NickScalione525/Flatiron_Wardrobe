@@ -17,9 +17,10 @@
   <%= link_to "All outfits", outfits_path, class: "navbar-brand" %>
   <%= link_to "My outfits", user_outfits_path(current_user), class: "navbar-brand" %>
   <%= link_to "Logout", logout_path, class: "navbar-brand" %>
+  
 
   <%else%>
-
+  <%=button_to 'Sign Up With Facebook', "/auth/facebook"%>
   <%= link_to "Sign Up", signup_path %>
   <%= link_to "Login",  login_path %>
   <% end %>
