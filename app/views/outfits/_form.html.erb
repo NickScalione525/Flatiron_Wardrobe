@@ -1,5 +1,5 @@
 <%=form_for @outfit do |f| %>
-  <%= f.label "Name:" %>
+  <%= f.label "Name of Outfit:" %>
   <%= f.text_field :name %><br>
   <%= f.label "Top:" %>
   <%= f.text_field :top %><br>
@@ -9,5 +9,15 @@
   <%= f.text_field :shoes %><br>
   <%= f.label "Accessories:" %>
   <%= f.text_field :accessories %><br>
+      <%= f.label "Styles:" %>
+      <%= f.fields_for :styles do |m|%><br>
+      <%= m.label "Type of Style:" %>
+      <%= m.text_field :name %><br>
+      <%= m.label "Era:" %>
+      <%= m.text_field :era %><br><br>
+      <%end%>
+      <br>
+    <%= f.submit "Submit"%>
+
 
   <%end%>

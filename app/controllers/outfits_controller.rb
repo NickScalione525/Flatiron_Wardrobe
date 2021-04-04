@@ -1,5 +1,5 @@
 class OutfitsController < ApplicationController
-    before_action :set_outfit, only: [:show, :edit, :update, :destroy]
+    
     layout "application"
 
     def index
@@ -7,15 +7,17 @@ class OutfitsController < ApplicationController
     end
 
     def show
-
+        @outfit = Outfit.find_by(id: params[:id])
     end
+
 
     def new
         @outfit = Outfit.new
+        @outfit.styles.build
     end
 
     def create
-        @outfit = Outfit.create(outfit_params)
+        @outfit = Outfit.new(outfit_params)
         if @outfit.save
             redirect_to outfit_path(@outfit)
 
@@ -44,7 +46,7 @@ class OutfitsController < ApplicationController
     private
 
     def outfit_params
-        params.require(:outfit).permit(:id, :name, :top, :bottom, :shoes, :accessories, style_ids:[], styles_attributes: [ :id, :name, :era])
+        params.require(:outfit).permit(:id, :name, :top, :bottom, :shoes, :accessories, styles_attributes: [ :name, :era])
     end
 
     def set_outfit

@@ -1,3 +1,7 @@
+<%@error && @error.each do |e|%>
+<li><%=e%><li>
+<%end%>
+
 <h1> New Outfit </h1>
 
 <%= render 'form'%>

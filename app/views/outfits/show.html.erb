@@ -10,6 +10,10 @@
 <ul>
 <p>
 
+<%@outfit.styles.each do |s|%>
+<li><%= s.name%> <%= s.era%></li>
+<%end%>
+
 
 
 <%=link_to "Add a Style", new_outfit_style_path(@outfit)%>
