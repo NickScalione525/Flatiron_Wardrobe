@@ -17,7 +17,8 @@ class OutfitsController < ApplicationController
 
     def new
         @outfit = Outfit.new
-        @outfit.styles.build
+        @outfit.styles.build(user: current_user)
+        @styles = @outfit.styles.where(user_id: current_user.id)
     end
 
     def create
@@ -41,7 +42,7 @@ class OutfitsController < ApplicationController
     end
 
     def edit
- 
+
     end
 
     def destroy
@@ -53,7 +54,7 @@ class OutfitsController < ApplicationController
     private
 
     def outfit_params
-        params.require(:outfit).permit(:id, :name, :top, :bottom, :shoes, :accessories, :times_worn, styles_attributes: [ :name, :era])
+        params.require(:outfit).permit(:id, :name, :top, :bottom, :shoes, :accessories, :times_worn, styles_attributes: [ :name, :era, :user_id])
     end
 
     def set_outfit

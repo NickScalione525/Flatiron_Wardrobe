@@ -29,10 +29,12 @@ class StylesController < ApplicationController
         if params[:outfit_id]
         @style.outfit_id = params[:outfit_id]
         end
-        @style.save
-
-        redirect_to outfits_path
+          if @style.save
+          redirect_to outfits_path
+          else
+            render :new
         
+    end
     end
 
     private

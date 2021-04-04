@@ -9,6 +9,8 @@ gem 'sprockets-rails'
 
 gem 'pry'
 
+gem 'jquery-rails'
+
 
 gem 'omniauth-facebook'
 

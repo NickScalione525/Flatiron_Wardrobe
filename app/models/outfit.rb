@@ -1,4 +1,7 @@
 class Outfit < ApplicationRecord
+
+    default_scope { order(times_worn: :desc) }
+
     has_many :users, through: :styles
     has_many :styles
 
@@ -8,7 +11,9 @@ class Outfit < ApplicationRecord
 
     accepts_nested_attributes_for :styles
 
-    scope :highest_version, -> { all.order(times_worn: :DESC).limit(1).first }
+    
+
+    validates :name, presence: true
 
 
     def styles_attributes=(attrs)
