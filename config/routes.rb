@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   resources :outfits do 
-    resources :styles
+    resources :styles, only: [:index, :new, :create]
   end
   resources :styles 
 
@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
 
   get '/logout' => 'sessions#destroy'
+  post '/logout' => 'sessions#destroy'
 
  
 

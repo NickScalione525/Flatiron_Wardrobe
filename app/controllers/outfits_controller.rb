@@ -7,43 +7,50 @@ class OutfitsController < ApplicationController
    
 
     def index
-            @outfits = Outfit.all
+        if params[:user_id]
+            user = User.find_by(id: params[:user_id])
+            @outfits = user.outfits
+        else
+            @outfits = Outfit.all 
+        end
     end
 
     def show
-        @outfit = Outfit.find_by(id: params[:id])
+        # @outfit = Outfit.find_by(id: params[:id])
     end
 
 
     def new
         @outfit = Outfit.new
         @outfit.styles.build(user: current_user)
-        @styles = @outfit.styles.where(user_id: current_user.id)
+        @styles = @outfit.styles.select{|s| s.user_id == current_user.id}
     end
 
     def create
         @outfit = Outfit.new(outfit_params)
-        @outfit.styles.each {|m| m.user = current_user}
+        @outfit.styles.each {|s| s.user = current_user}
         if @outfit.save
             redirect_to outfit_path(@outfit)
-
         else
-            
-            @errors = @outfit.errors.full_messages
-            render 'new'
+          @styles = @outfit.styles.select{|m| m.user_id == current_user.id}
+          render :new
         end
-    end
+      end
+
+      def edit
+      end
+
+  
     def update
+        # @outfit = Outfit.find_by(id: params[:id])
         if @outfit.update(outfit_params)
-            redirect_to @outfit
+            redirect_to outfits_path
         else
             render 'edit'
         end
     end
 
-    def edit
-
-    end
+ 
 
     def destroy
         @outfit.delete
@@ -58,7 +65,7 @@ class OutfitsController < ApplicationController
     end
 
     def set_outfit
-        @outfit = Outfit.find(params[:id])
+        @outfit = Outfit.find_by(id: params[:id])
     end
 
 

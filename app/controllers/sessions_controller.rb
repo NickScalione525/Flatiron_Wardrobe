@@ -8,10 +8,10 @@ class SessionsController < ApplicationController
     end
     
     def create
-        user = User.find_by(username: params[:user][:username])
-        if user && user.authenticate(params[:user][:password])
-            session[:user_id] = user.id
-            redirect_to outfits_path(user)
+        @user = User.find_by(username: params[:user][:username])
+        if @user && @user.authenticate(params[:user][:password])
+            session[:user_id] = @user.id
+            redirect_to outfits_path(@user)
         elsif @user
             @errors = ["Invalid Password, Please Try Again."]
             render :new

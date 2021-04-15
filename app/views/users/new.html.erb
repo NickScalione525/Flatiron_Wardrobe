@@ -1,4 +1,9 @@
-<h1>signup<h1>
+<h1>Sign up</h1>
+
+<body>
+<% @errors && @errors.each do |e|%>
+<li><%=e%></li>
+<%end%>
 
 
 <%= form_for(@user) do |f|  %>
@@ -12,9 +17,15 @@
 <%= f.label :password %>
 <%= f.password_field :password %>
 <br>
+<br>
 
 <%= f.submit "Submit" %>
 
 <%end%>
+
+<body>
+<br>
+
+<br>
 
 <%= button_to "Sign in with Facebook", '/auth/facebook' %>

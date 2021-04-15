@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>FlatironWardrobe</title>
+    <title>FlatIron Wardrobe</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -9,20 +9,35 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
+    <style>
+body {
+  background-image: url('https://image.freepik.com/free-vector/interior-design-dressing-room-background_1308-54317.jpg');
+    background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-position: center center;
+  background-size: 80% 80%;
+}
+</style>
+
+<style>
+body {color: black;}
+h1   {color: black;}
+p    {color: black;}
+p    {color: black;}
+</style>
+
  
-<nav class= "navbar navbar-inverse navbar-fixed-bottom">
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
   <div class="container-fluid">
-     <% if logged_in? %>
-  <%= link_to "Create an Outfit", new_outfit_path, class: "navbar-brand" %>
-  <%= link_to "All Outfits", outfits_path, class: "navbar-brand" %>
-  <%= link_to "My Outfits", user_outfits_path(current_user), class: "navbar-brand" %>
-  <%= link_to "Logout", logout_path, class: "navbar-brand" %>
-  
+     <% if logged_in?%>
+  <%= link_to "Create A outfit", new_outfit_path, class: "navbar-brand" %>
+  <%= link_to "All outfits", outfits_path, class: "navbar-brand" %>
+  <%= link_to "My outfits", user_outfits_path(current_user), class: "navbar-brand" %>
+  <%= link_to "Create A Style", new_style_path(current_user), class: "navbar-brand" %>
+  <%= link_to "Logout", logout_path, method: "destroy", class: "navbar-brand" %>
 
   <%else%>
-  <%=button_to 'Sign Up With Facebook', "/auth/facebook"%>
-  <%= link_to "Sign Up", signup_path %>
-  <%= link_to "Login",  login_path %>
+  <%=button_to 'Sign Up With Facebook', "/auth/facebook"%> |  <%= link_to "Sign Up", signup_path %> | <%= link_to "Login",  login_path %>
   <% end %>
 
   </div>
@@ -33,4 +48,3 @@
     <%= yield %>
  <body>
 </html>
-

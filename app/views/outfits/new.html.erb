@@ -1,10 +1,9 @@
-<%@error && @error.each do |e|%>
-<li><%=e%><li>
+<% @errors && @errors.each do |e| %>
+  <li><%=e%></li>
 <%end%>
-
 <h1> New Outfit </h1>
 
 <%= render 'form'%>
 
 
-<%= link_to "Exit", root_path%>
+<%= link_to "Exit", outfits_path %>

@@ -1,6 +1,9 @@
 <h1> Log In </h1>
 
-<%=flash[:message] if flash[:message]%>
+<%@errors && @errors.each do |e| %>
+<li><%=e%></li>
+
+<%end%>
 
 
 <%= form_for :user do |f| %>

@@ -3,7 +3,10 @@
 <% @outfits.each do |outfit| %>
 
 <div>
-</h2><%= link_to outfit.name, outfit_path(outfit)%><h2>
+<h1><%= link_to outfit.name, outfit_path(outfit)%></h1>
+
+<br>
+
 </h3>
 <%= outfit.top%>
 <br>
@@ -15,8 +18,5 @@
 <br>
 <%= outfit.times_worn%>
 <br><h3>
-<%# <% if outfit.styles?%>
-<%# <h3> <%= link_to outfit.styles.name, outfit_styles_path(outfit)%>
-<%# <%end%>
-<div>
+
 <%end%>

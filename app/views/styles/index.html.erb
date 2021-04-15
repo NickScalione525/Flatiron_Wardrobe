@@ -1,3 +1,1 @@
-<%@styles.each do |style|%>
-<%= style.name%>
-<%= style.era%>
+<%=render(partial: 'styles', locals: {styles: @styles, index: true})%>
