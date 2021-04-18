@@ -32,6 +32,7 @@ class OutfitsController < ApplicationController
         if @outfit.save
             redirect_to outfit_path(@outfit)
         else
+          @errors = ["Outfit Needs A ame, Please Try Again."]
           @styles = @outfit.styles.select{|m| m.user_id == current_user.id}
           render :new
         end

@@ -1,7 +1,10 @@
 
-
 <% if @outfit%>
 <h2><%= @outfit.name%></h2>
+<%end%>
+
+<% @errors && @errors.each do |e| %>
+  <li><%=e%></li>
 <%end%>
 
 <h1> Comeplete this Outfit by giving it a Style </h1>

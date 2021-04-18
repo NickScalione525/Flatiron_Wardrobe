@@ -2,14 +2,17 @@ Rails.application.routes.draw do
 
 
 
-  resources :users, except: [:new, :create] do
+  resources :users, except: [:new, :create, :index] do
     resources :outfits
   end
 
   resources :outfits do 
-    resources :styles, only: [:index, :new, :create]
+    resources :styles, only: [:index, :new, :create, :show, :edit]
   end
-  resources :styles 
+
+
+  resources :styles
+
 
 
   get '/welcome', to: "welcome#home", as: "welcome_page"

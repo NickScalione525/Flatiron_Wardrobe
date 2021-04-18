@@ -7,14 +7,14 @@ class StylesController < ApplicationController
 
 
     def index
- 
-      if params[:outfit_id]
-          @outfit = Outfit.find_by(id: params[:outfit_id])
-          @styles = @outfit.styles
-      else
+        if params[:outfit_id] 
+            @outfit = Outfit.find_by(id: params[:outfit_id]) 
+            @styles = @outfit.styles
+        else
           @styles = Style.all 
       end
-  end
+    end
+
 
     def new
         if params[:outfit_id]
@@ -39,14 +39,15 @@ class StylesController < ApplicationController
            
           redirect_to outfits_path
           else
+            @errors = ["Style Needs A Name, Please Try Again."]
             render :new
         
     end
     end
 
-  
+
     def edit
-        if @style.user != current_user
+        if @style.outfit != current_outfit
           flash[:message] = "That is not your style!"
           redirect_to '/styles'
         end
