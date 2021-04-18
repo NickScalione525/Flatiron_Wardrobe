@@ -16,6 +16,16 @@ class Outfit < ApplicationRecord
 
     validates :name, presence: true
 
+    scope(:attribute_search, ->(top) {self.where("top == ?", top)})
+
+
+  
+
+    def self.outfit_search
+        if @outfit = Outfit.all.find{|outfit| outfit.include?(params[:search])}
+          redirect_to outfit_path(@outfit)
+        end
+      end
 
     def styles_attributes=(attrs)
 

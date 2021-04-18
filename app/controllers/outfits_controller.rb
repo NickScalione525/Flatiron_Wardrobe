@@ -1,19 +1,24 @@
 class OutfitsController < ApplicationController
 
-    before_action(:set_outfit, except: [:index, :new, :create])
+    before_action(:set_outfit, except: [ :index, :new, :create])
     before_action(:redirect_if_not_logged_in)
     
     layout "application"
    
 
     def index
+
         if params[:user_id]
-            user = User.find_by(id: params[:user_id])
-            @outfits = user.outfits
+            @user = User.find_by(id: params[:user_id])
+            @outfits = @user.outfits
+        elsif  
+            if params[:top]
+                @outfits = Outfit.attribute_search(params[:top])
         else
             @outfits = Outfit.all 
         end
     end
+end
 
     def show
         # @outfit = Outfit.find_by(id: params[:id])

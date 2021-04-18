@@ -1,5 +1,12 @@
 <h1> All Outfits </h1>
 
+Search by Article of Clothing
+<%=form_tag outfits_path, method: :get do %>
+<%= text_field_tag :top%>
+<%= submit_tag "Search" %>
+<%end%>
+
+
 <% @outfits.each do |outfit| %>
 
 <div>
