@@ -11,14 +11,25 @@ class OutfitsController < ApplicationController
         if params[:user_id]
             @user = User.find_by(id: params[:user_id])
             @outfits = @user.outfits
-        elsif  
-            if params[:top]
-                @outfits = Outfit.attribute_search(params[:top])
+            
+        elsif 
+            if params[:searching_for]
+            p = params[:searching_for]
+            if p == "top"
+                @outfits = Outfit.top_search(params[:query])
+            elsif p == "bottom"
+                @outfits = Outfit.bottom_search(params[:query])
+            elsif p == "shoes"
+                @outfits = Outfit.shoes_search(params[:query])
+            elsif p == "accessories"
+                @outfits = Outfit.accessories_search(params[:query])
+            end 
+        end
         else
             @outfits = Outfit.all 
         end
     end
-end
+
 
     def show
         # @outfit = Outfit.find_by(id: params[:id])

@@ -1,9 +1,22 @@
 <h1> All Outfits </h1>
 
 Search by Article of Clothing
-<%=form_tag outfits_path, method: :get do %>
-<%= text_field_tag :top%>
-<%= submit_tag "Search" %>
+
+<%= form_tag outfits_path, :method => "get" do %>
+Search by
+</span>
+<span class="text-search">
+<select name="searching_for" id="searching_for" class="searching_for">
+  <option value="top">Top</option>
+  <option value="bottom">Bottom</option>
+  <option value="shoes">Shoes</option>
+   <option value="accessories">Accessories</option>
+</select> 
+<%# Type:  %>
+</span>
+<%= text_field_tag :query, "", class: "search" %>
+<span class="search-padding"></span>
+<button class="search-button">Search</button>
 <%end%>
 
 
